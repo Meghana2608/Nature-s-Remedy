@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nature's Remedy - Medicinal Plants & Benefits</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background: #f8f9fa;
+      padding-top: 70px;
+      line-height: 1.6;
+    }
+
+    
+    .hero {
+      background: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      flex-direction: column;
+      position: relative;
+    }
+    .hero::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index:0; }
+    .hero h1, .hero p, .hero a { z-index:1; }
+    .hero h1 { font-size: 2.5rem; font-weight:700; margin-bottom: 1rem; }
+    .hero p { font-size:1rem; max-width:600px; margin:0 auto 2rem; font-weight: 400; }
+    .hero a {
+      background:#4caf50; color:#fff; padding:1rem 2.5rem; border-radius:8px; font-weight:600; text-decoration:none;
+      transition: all .3s ease; border: none;
+    }
+    .hero a:hover { background:#45a049; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(76,175,80,0.3); }
+
+    
+    .navbar {
+      background: rgba(255,255,255,0.95) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .navbar-brand { font-weight:700; color: #2e7d32 !important; }
+    .navbar-nav .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+      transition: all .2s ease;
+      padding: 0.5rem 1rem;
+    }
+    .navbar-nav .nav-link.active { color: #2e7d32 !important; font-weight: 600; }
+    .navbar-nav .nav-link:hover { color: #4caf50 !important; }
+
+    
+    section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+   
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    h2 { font-size: 2rem; color: #2e7d32; }
+
+    
+    .card {
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all .3s ease;
+      cursor: pointer;
+      background: #fff;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      border-color: rgba(76,175,80,0.2);
+    }
+    .card-img-top {
+      object-fit: cover;
+      height: 220px;
+      transition: transform .4s ease;
+    }
+    .card:hover .card-img-top { transform: scale(1.03); }
+    .card-title { color: #2e7d32; font-weight: 600; }
+    .card-text { color: #666; line-height: 1.5; }
+
+  
+    .btn-outline-success {
+      border-color: #4caf50;
+      color: #4caf50;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all .3s ease;
+    }
+    .btn-outline-success:hover {
+      background: #4caf50;
+      border-color: #4caf50;
+      transform: translateY(-1px);
+    }
+
+ 
+    .form-control {
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+    }
+    .form-control:focus {
+      border-color: #4caf50;
+      box-shadow: 0 0 0 0.2rem rgba(76,175,80,0.25);
+    }
+
+    
+    #tips ul li {
+      background: #f8f9fa;
+      margin-bottom: 0.75rem;
+      padding: 1.25rem;
+      border-radius: 8px;
+      list-style: none;
+      border-left: 4px solid #4caf50;
+      color: #555;
+      font-weight: 400;
+    }
+
+    
+    footer {
+      background: #2e7d32;
+      color: white;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+    footer a:hover { color: #e8f5e9; opacity: 0.8; }
+
+   
+    body.dark {
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+    body.dark section {
+      background: #2a2a2a;
+      color: #e0e0e0;
+      border-color: rgba(255,255,255,0.1);
+    }
+    body.dark .navbar {
+      background: rgba(42,42,42,0.95) !important;
+      border-color: rgba(255,255,255,0.1);
+    }
+    body.dark .navbar-brand { color: #4caf50 !important; }
+    body.dark .navbar-nav .nav-link { color: #e0e0e0 !important; }
+    body.dark .navbar-nav .nav-link.active { color: #4caf50 !important; }
+    body.dark .hero { background: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat; }
+    body.dark .hero::before { background: rgba(0,0,0,0.7); }
+    body.dark .card {
+      background: #333;
+      border-color: rgba(255,255,255,0.1);
+    }
+    body.dark .card-title { color: #4caf50; }
+    body.dark .card-text { color: #ccc; }
+    body.dark footer { background: #1a1a1a; }
+    body.dark #tips ul li {
+      background: #333;
+      color: #e0e0e0;
+    }
+    body.dark .form-control {
+      background: #333;
+      border-color: rgba(255,255,255,0.2);
+      color: #e0e0e0;
+    }
+    body.dark .form-control:focus {
+      border-color: #4caf50;
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Nature's Remedy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tips">Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <button id="themeToggle" class="btn btn-outline-secondary ms-3"><i class="bi bi-sun"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  
+  <section class="hero">
+    <h1>Welcome to Nature's Remedy</h1>
+    <p>Discover medicinal plants, their uses, and safe tips to bring nature's healing into your life.</p>
+    <a href="#home">Discover More</a>
+  </section>
+
+  
+  <section id="home" class="container">
+    <h2 class="mb-4 text-center">Medicinal Trees & Plants</h2>
+    <input type="text" id="plantSearch" class="form-control mb-4" placeholder="Search plants...">
+
+    <div class="row g-4" id="plantCards">
+      <!-- Aloe Vera -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="https://media.istockphoto.com/id/1459567788/photo/closeup-of-alow-leaves-in-a-metal-bucket-filled-with-soil.jpg?s=612x612&w=0&k=20&c=71ifIaWXYVoRtrDZhUvlrolfVwYcVWjZQVc472mZ6Yw=" class="card-img-top" alt="Aloe Vera" />
+          <div class="card-body">
+            <h5 class="card-title">Aloe Vera</h5>
+            <p class="card-text">Aloe Vera soothes burns and boosts skin health.</p>
+            <button class="btn btn-outline-success read-more-btn">Read More</button>
+            <div class="more-info" style="display:none;">
+              <p>Aloe Vera is a succulent plant known for its gel-filled leaves. The gel is used topically to treat burns, wounds, and skin conditions like acne. It contains vitamins, minerals, and enzymes that promote healing and moisturize the skin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Neem -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="https://media.istockphoto.com/id/601911480/photo/medicinal-neem.jpg?s=612x612&w=0&k=20&c=VK57zSyBmHs6_xqMhfLZNK7xG4HpZoapQM1WNTsdMwA=" class="card-img-top" alt="Neem Tree" />
+          <div class="card-body">
+            <h5 class="card-title">Neem Tree</h5>
+            <p class="card-text">Neem is a natural antimicrobial and supports skin health.</p>
+            <button class="btn btn-outline-success read-more-btn">Read More</button>
+            <div class="more-info" style="display:none;">
+              <p>The Neem tree, also known as Azadirachta indica, has been used in traditional medicine for centuries. Its leaves, bark, and oil have antibacterial, antiviral, and antifungal properties. Neem is effective against skin disorders, dental issues, and as a natural pesticide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Tulsi -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="https://media.istockphoto.com/id/1215356663/photo/basil-leaf-flower-and-plant-or-ocimum-tenuiflorum-are-ayurveda-medicine-commonly-known-as.jpg?s=612x612&w=0&k=20&c=Rc7rNXBQJZRBm_jo-4Q-T6d0Gr91I7w1D13xmhhasgs="card-img-top" alt="Tulsi" />
+          <div class="card-body">
+            <h5 class="card-title">Tulsi (Holy Basil)</h5>
+            <p class="card-text">Tulsi is known for its adaptogenic and immune-boosting properties.</p>
+            <button class="btn btn-outline-success read-more-btn">Read More</button>
+            <div class="more-info" style="display:none;">
+              <p>Tulsi, also known as Holy Basil, is revered in Ayurveda for its medicinal properties. It helps reduce stress, supports respiratory health, and has antimicrobial effects. Regular consumption can boost immunity and improve digestion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ginger -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="https://media.istockphoto.com/id/154201902/photo/background-with-lots-of-ginger-roots.jpg?s=612x612&w=0&k=20&c=s44wUoUrWFN-3ulMgxAHdfdxnF4Rz2HzPHU3HQJ5PSw=" class="card-img-top" alt="Ginger" />
+          <div class="card-body">
+            <h5 class="card-title">Ginger</h5>
+            <p class="card-text">Ginger aids digestion and reduces nausea.</p>
+            <button class="btn btn-outline-success read-more-btn">Read More</button>
+            <div class="more-info" style="display:none;">
+              <p>Ginger is a powerful root with anti-inflammatory and antioxidant properties. It is commonly used to alleviate nausea, improve digestion, and reduce muscle pain. Ginger tea can help with colds and sore throats.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Turmeric -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="https://media.istockphoto.com/id/1360340472/photo/turmeric-roots-freshly-harvested-turmeric-roots-with-the-plants-close-up-before-cut-out-and.jpg?s=612x612&w=0&k=20&c=TY029knlBjwYEfdLXKlWQQCUinc0a0FRS0OxvJDfVuo=" class="card-img-top" alt="Turmeric" />
+          <div class="card-body">
+            <h5 class="card-title">Turmeric</h5>
+            <p class="card-text">Turmeric has anti-inflammatory benefits due to curcumin.</p>
+            <button class="btn btn-outline-success read-more-btn">Read More</button>
+            <div class="more-info" style="display:none;">
+              <p>Turmeric contains curcumin, a compound with strong anti-inflammatory and antioxidant effects. It supports joint health, aids in wound healing, and may improve brain function. Often used in golden milk for its benefits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Mint -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="https://media.istockphoto.com/id/517852002/photo/spearmint-labiatae-mentha-spicata-l.jpg?s=612x612&w=0&k=20&c=Y8885SaapMINBCODr_aJ2VrTzNmIdVRLNNtjF1kOf-M=" class="card-img-top" alt="Mint" />
+          <div class="card-body">
+            <h5 class="card-title">Mint</h5>
+            <p class="card-text">Mint freshens breath and aids digestion.</p>
+            <button class="btn btn-outline-success read-more-btn">Read More</button>
+            <div class="more-info" style="display:none;">
+              <p>Mint leaves are excellent for soothing digestive issues, freshening breath, and relieving headaches. Peppermint oil can help with irritable bowel syndrome and muscle spasms. It's also used in teas for relaxation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About Nature's Remedy</h2>
+    <p>Nature's Remedy is dedicated to sharing knowledge about medicinal trees and plants. Our goal is to reconnect modern life with the healing power of nature.</p>
+    <p>We work with herbalists and researchers to provide authentic, science-backed information on natural wellness. Our platform serves as a comprehensive resource for individuals seeking natural alternatives for health and wellness.</p>
+    <p>Through our website, we aim to educate and empower users with reliable information about traditional and modern herbal remedies, promoting sustainable and holistic approaches to health.</p>
+  </section>
+
+  <!-- Tips -->
+  <section id="tips" class="container">
+    <h2>Herbal Health Tips</h2>
+    <ul>
+      <li>Always consult a doctor before starting new herbal remedies.</li>
+      <li>Use only organically sourced plants for safety.</li>
+      <li>Store herbs in airtight containers away from sunlight.</li>
+      <li>Drink plenty of water when consuming herbal teas.</li>
+      <li>Learn traditional and modern preparation methods.</li>
+      <li>Combine herbs with a balanced diet for best results.</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <div class="mb-3">
+        <label for="nameInput" class="form-label">Name</label>
+        <input type="text" class="form-control" id="nameInput" placeholder="Your name" required />
+      </div>
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">Email</label>
+        <input type="email" class="form-control" id="emailInput" placeholder="you@example.com" required />
+      </div>
+      <div class="mb-3">
+        <label for="messageInput" class="form-label">Message</label>
+        <textarea class="form-control" id="messageInput" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center">
+    <div class="container">
+      <div class="mb-3">
+        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-4"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-youtube fs-4"></i></a>
+        <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+      </div>
+      <p class="mb-0">&copy; 2025 Nature's Remedy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+        }
+      });
+    });
+
+ 
+    const searchInput = document.getElementById('plantSearch');
+    const cards = document.querySelectorAll('#plantCards .col-md-6, #plantCards .col-lg-4');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        card.style.display = title.includes(filter) ? '' : 'none';
+      });
+    });
+
+    
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you! Your message has been received.');
+      e.target.reset();
+    });
+
+    
+    document.querySelectorAll('.read-more-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const moreInfo = btn.nextElementSibling;
+        if (moreInfo.style.display === 'none' || moreInfo.style.display === '') {
+          moreInfo.style.display = 'block';
+          btn.textContent = 'Read Less';
+        } else {
+          moreInfo.style.display = 'none';
+          btn.textContent = 'Read More';
+        }
+      });
+    });
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const icon = themeToggle.querySelector('i');
+      if (document.body.classList.contains('dark')) {
+        icon.className = 'bi bi-moon';
+      } else {
+        icon.className = 'bi bi-sun';
+      }
+    });
+  </script>
+</body>
+</html>
